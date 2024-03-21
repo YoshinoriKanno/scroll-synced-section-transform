@@ -21,6 +21,29 @@ body{
     background-repeat: no-repeat;
     /* clip-path: polygon(0px 0px, 100% 0, 100% 409px, 0 409px); */
     background-attachment: fixed;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.top-img-container-2 {
+  background: url("https://placehold.jp/5152x3435.png");
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* clip-path: polygon(0px 0px, 100% 0, 100% 409px, 0 409px); */
+  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  background-attachment: fixed;
+  z-index: 1;
+
 }
 
 .top-quote-container{
@@ -90,6 +113,10 @@ body{
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         position: relative;
     }
+    .top-img-container2{
+        /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
+        position: relative;
+    }
 
     .top-quote-container blockquote{
         font-size: 1.5rem;
@@ -100,8 +127,8 @@ body{
     }
 
     .top-quote-container{
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        position: relative;
+        /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
+        /* position: relative; */
     }
 
     .top-quote-container blockquote{
