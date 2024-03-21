@@ -15,7 +15,14 @@
     // ビューポートの高さに基づいて clipPath を動的に更新
     const viewportHeight = window.innerHeight;
 
-    top.style.transform = `translate(0px, ${translateY}px)`;
+    const translateYBase = Math.max(scrollY - top.offsetTop, 0); // 基本的な translateY の計算
+
+    const topTranslateY = Math.min(translateYBase, viewportHeight); // translateY の上限を viewportHeight に制限
+
+
+
+
+    top.style.transform = `translate(0px, ${topTranslateY}px)`;
     top.style.height = `calc((${viewportHeight}px) * 2)`;
 
     topImgContainer.style.clipPath = `polygon(0 0, 100% 0, 100% ${Math.max(viewportHeight - translateY, 0)}px, 0 ${Math.max(viewportHeight - translateY, 0)}px)`;
@@ -44,5 +51,5 @@
 
   // top と bottom を監視対象に追加
   observer.observe(top);
-  observer.observe(bottom);
+  // observer.observe(bottom);
 }
