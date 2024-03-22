@@ -6,26 +6,33 @@
   const containers = document.querySelectorAll(".scroll-reveal-item");
 
   let scrollListenerAdded = false;
+  let lastKnownScrollPosition = 0;
+  let ticking = false;
 
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
+  const updateElements = () => {
+    const scrollY = lastKnownScrollPosition;
     const viewportHeight = window.innerHeight;
     const translateY = Math.max(scrollY - top.offsetTop, 0);
 
     containers.forEach((container, index) => {
       const baseHeight = viewportHeight * (index + 1);
       const clipHeight = Math.max(baseHeight - translateY, 0);
-
       container.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight}px, 0 ${clipHeight}px)`;
     });
 
-    // .top 要素の高さを設定し、すべてのコンテナの処理が終了したら transform を停止
     const totalHeight = viewportHeight * containers.length;
     top.style.height = `${totalHeight}px`;
-    if (translateY < totalHeight) {
-      top.style.transform = `translate(0px, ${translateY}px)`;
-    } else {
-      top.style.transform = `translate(0px, ${totalHeight}px)`;
+    top.style.transform = translateY < totalHeight ? `translate(0px, ${translateY}px)` : `translate(0px, ${totalHeight}px)`;
+
+    ticking = false;
+  };
+
+  const handleScroll = () => {
+    lastKnownScrollPosition = window.scrollY;
+
+    if (!ticking) {
+      window.requestAnimationFrame(updateElements);
+      ticking = true;
     }
   };
 
@@ -47,5 +54,4 @@
   });
 
   observer.observe(top);
-
 }
