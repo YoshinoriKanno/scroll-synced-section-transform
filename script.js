@@ -1,9 +1,9 @@
 "use strict";
 
 {
-  const top = document.querySelector(".top");
+  const top = document.querySelector(".scroll-reveal-items");
   const bottom = document.querySelector(".bottom");
-  const containers = document.querySelectorAll(".top-img-container");
+  const containers = document.querySelectorAll(".scroll-reveal-item");
 
   let scrollListenerAdded = false;
 
@@ -47,4 +47,5 @@
   });
 
   observer.observe(top);
+
 }

@@ -8,12 +8,17 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="main.css">
+    <script>
+      // ページ読み込みが始まる前にページのトップにスクロール
+      history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    </script>
   </head>
 
   <body>
     <section style="height: 1000px; background-color: lightblue;">kv</section>
-    <section class="top">
-      <div class="top-img-container top-img-container-1">
+    <section class="scroll-reveal-items">
+      <div class="scroll-reveal-item scroll-reveal-item-1">
         <!-- image -->
         <blockquote>
           Sometimes you will never know the value of a moment until it becomes a memory.
@@ -22,7 +27,7 @@
         </blockquote>
       </div>
 
-      <div class="top-img-container top-img-container-2">
+      <div class="scroll-reveal-item scroll-reveal-item-2">
         <!-- image -->
         <blockquote>
           Sometimes you will never know the value of a moment until it becomes a memory.
@@ -31,7 +36,7 @@
         </blockquote>
       </div>
 
-      <div class="top-img-container top-img-container-3">
+      <div class="scroll-reveal-item scroll-reveal-item-3">
         <blockquote>
           Sometimes you will never know the value of a moment until it becomes a memory.
           <br>
