@@ -14,19 +14,23 @@
     const viewportHeight = window.innerHeight;
     const translateY = Math.max(scrollY - itemsContainer.offsetTop, 0);
 
-    items.forEach((item, index) => {
-      const baseHeight = viewportHeight * (index + 1);
-      const clipHeight = Math.max(baseHeight - translateY, 0);
-      item.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight}px, 0 ${clipHeight}px)`;
-      // z-index を逆順に設定
-      const zIndex = items.length - index; // 配列は0から始まるため、items.length - index とする
-      item.style.zIndex = zIndex;
-    });
+    // translateYがviewportHeightを超えたら、それ以上の更新を停止
+    if (translateY <= viewportHeight * (items.length - 1)) {
+      items.forEach((item, index) => {
+        const baseHeight = viewportHeight * (index + 1);
+        const clipHeight = Math.max(baseHeight - translateY, 0);
+        item.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight}px, 0 ${clipHeight}px)`;
 
+        const zIndex = items.length - index;
+        item.style.zIndex = zIndex;
+      });
 
-    const totalHeight = viewportHeight * items.length;
-    itemsContainer.style.height = `${totalHeight}px`;
-    itemsContainer.style.transform = translateY < totalHeight ? `translate(0px, ${translateY}px)` : `translate(0px, ${totalHeight}px)`;
+      itemsContainer.style.height = `${viewportHeight * items.length}px`;
+      itemsContainer.style.transform = `translate(0px, ${translateY}px)`;
+    } else {
+      // translateYがviewportHeightを超えた場合、transformの更新を停止し、clip-pathの更新も停止
+      itemsContainer.style.transform = `translate(0px, ${viewportHeight * (items.length - 1)}px)`;
+    }
 
     ticking = false;
   };
