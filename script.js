@@ -19,12 +19,15 @@
     // const clipHeight2 = Math.max(-translateY + viewportHeight, 0);
     console.log('translateY : ' + translateY + '/' + 'viewportHeight : ' + viewportHeight);
     let clipHeight2 = viewportHeight
-
-
     clipHeight2 = viewportHeight ? Math.max(-translateY + viewportHeight * 2, 0) : 0; // translateYがviewportHeightを超えたら開始
 
 
-    const clipHeight3 = translateY > viewportHeight * 2 ? Math.max(-translateY + viewportHeight * 2, 0) : 0; // translateYがviewportHeightの2倍を超えたら開始
+    // const clipHeight3 = translateY > viewportHeight * 2 ? Math.max(-translateY + viewportHeight * 2, 0) : 0; // translateYがviewportHeightの2倍を超えたら開始
+
+    let clipHeight3 = viewportHeight * 2
+    clipHeight3 = viewportHeight ? Math.max(-translateY + viewportHeight * 3, 0) : 0; // translateYがviewportHeightを超えたら開始
+
+
 
     // クリップパスの設定
     topImgContainer.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight1}px, 0 ${clipHeight1}px)`;
