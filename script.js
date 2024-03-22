@@ -3,9 +3,7 @@
 {
   const top = document.querySelector(".top");
   const bottom = document.querySelector(".bottom");
-  const topImgContainer1 = document.querySelector(".top-img-container-1");
-  const topImgContainer2 = document.querySelector(".top-img-container-2");
-  const topImgContainer3 = document.querySelector(".top-img-container-3");
+  const containers = document.querySelectorAll(".top-img-container");
 
   let scrollListenerAdded = false;
 
@@ -14,26 +12,20 @@
     const viewportHeight = window.innerHeight;
     const translateY = Math.max(scrollY - top.offsetTop, 0);
 
-    // スクロールに応じて各要素のクリップ高さを計算
-    const clipHeight1 = Math.max(-translateY + viewportHeight, 0);
+    containers.forEach((container, index) => {
+      const baseHeight = viewportHeight * (index + 1);
+      const clipHeight = Math.max(baseHeight - translateY, 0);
 
-    let clipHeight2 = viewportHeight
-    clipHeight2 = viewportHeight ? Math.max(-translateY + viewportHeight * 2, 0) : 0;
+      container.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight}px, 0 ${clipHeight}px)`;
+    });
 
-    let clipHeight3 = viewportHeight * 2
-    clipHeight3 = viewportHeight ? Math.max(-translateY + viewportHeight * 3, 0) : 0;
-
-    // クリップパスの設定
-    topImgContainer1.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight1}px, 0 ${clipHeight1}px)`;
-    topImgContainer2.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight2}px, 0 ${clipHeight2}px)`;
-    topImgContainer3.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight3}px, 0 ${clipHeight3}px)`;
-
-    // .top 要素の高さを設定し、3つの要素の処理が終了したら transform を停止
-    top.style.height = `${viewportHeight * 3}px`;
-    if (translateY < viewportHeight * 3) {
+    // .top 要素の高さを設定し、すべてのコンテナの処理が終了したら transform を停止
+    const totalHeight = viewportHeight * containers.length;
+    top.style.height = `${totalHeight}px`;
+    if (translateY < totalHeight) {
       top.style.transform = `translate(0px, ${translateY}px)`;
     } else {
-      top.style.transform = `translate(0px, ${viewportHeight * 3}px)`;
+      top.style.transform = `translate(0px, ${totalHeight}px)`;
     }
   };
 
