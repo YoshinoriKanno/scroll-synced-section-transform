@@ -3,9 +3,9 @@
 {
   const top = document.querySelector(".top");
   const bottom = document.querySelector(".bottom");
-  const topImgContainer = document.querySelector(".top-img-container");
+  const topImgContainer1 = document.querySelector(".top-img-container-1");
   const topImgContainer2 = document.querySelector(".top-img-container-2");
-  const topQuoteContainer = document.querySelector(".top-quote-container");
+  const topImgContainer3 = document.querySelector(".top-img-container-3");
 
   let scrollListenerAdded = false;
 
@@ -16,23 +16,17 @@
 
     // スクロールに応じて各要素のクリップ高さを計算
     const clipHeight1 = Math.max(-translateY + viewportHeight, 0);
-    // const clipHeight2 = Math.max(-translateY + viewportHeight, 0);
-    console.log('translateY : ' + translateY + '/' + 'viewportHeight : ' + viewportHeight);
+
     let clipHeight2 = viewportHeight
-    clipHeight2 = viewportHeight ? Math.max(-translateY + viewportHeight * 2, 0) : 0; // translateYがviewportHeightを超えたら開始
-
-
-    // const clipHeight3 = translateY > viewportHeight * 2 ? Math.max(-translateY + viewportHeight * 2, 0) : 0; // translateYがviewportHeightの2倍を超えたら開始
+    clipHeight2 = viewportHeight ? Math.max(-translateY + viewportHeight * 2, 0) : 0;
 
     let clipHeight3 = viewportHeight * 2
-    clipHeight3 = viewportHeight ? Math.max(-translateY + viewportHeight * 3, 0) : 0; // translateYがviewportHeightを超えたら開始
-
-
+    clipHeight3 = viewportHeight ? Math.max(-translateY + viewportHeight * 3, 0) : 0;
 
     // クリップパスの設定
-    topImgContainer.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight1}px, 0 ${clipHeight1}px)`;
+    topImgContainer1.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight1}px, 0 ${clipHeight1}px)`;
     topImgContainer2.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight2}px, 0 ${clipHeight2}px)`;
-    topQuoteContainer.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight3}px, 0 ${clipHeight3}px)`;
+    topImgContainer3.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight3}px, 0 ${clipHeight3}px)`;
 
     // .top 要素の高さを設定し、3つの要素の処理が終了したら transform を停止
     top.style.height = `${viewportHeight * 3}px`;
