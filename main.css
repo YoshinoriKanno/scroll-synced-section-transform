@@ -31,6 +31,23 @@ body {
   justify-content: center;
   align-items: center;
 }
+@media (min-width: 768px) {
+  .scroll-reveal-item {
+    width: 50%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* position: absolute; */
+    left: 50%;
+    top: 0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+}
 .scroll-reveal-item .scroll-reveal-item__card {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 8px;
@@ -52,6 +69,24 @@ body {
 }
 .scroll-reveal-item.scroll-reveal-item--3 {
   background-image: url("img2.jpg");
+}
+
+@media (min-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* height: 100%; */
+    align-items: stretch;
+    height: 100vh;
+  }
+}
+
+.column {
+  height: 100vh;
+  background-color: lightpink;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .bottom {

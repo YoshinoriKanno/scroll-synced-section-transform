@@ -31,6 +31,24 @@ body {
   justify-content: center;
   align-items: center;
 
+  // 768px 以上の場合
+  @media (min-width: 768px) {
+    width: 50%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* position: absolute; */
+    left: 50%;
+    top: 0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+
+
 
   .scroll-reveal-item__card {
     background-color: rgba(255, 255, 255, .8);
@@ -59,6 +77,28 @@ body {
   &.scroll-reveal-item--3 {
     background-image: url("img2.jpg");
   }
+}
+
+.grid {
+
+  // 768px 以上の場合
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* height: 100%; */
+    align-items: stretch;
+    height: 100vh;
+  }
+
+
+}
+
+.column {
+  height: 100vh;
+  background-color: lightpink;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .bottom {
