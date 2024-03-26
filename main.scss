@@ -23,29 +23,29 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: absolute;
-  left: 0;
-  top: 0;
+  // background-attachment: fixed;
+  // position: absolute;
+  // left: 0;
+  // top: 0;
   display: grid;
   justify-content: center;
   align-items: center;
 
   // 768px 以上の場合
   @media (min-width: 768px) {
-    width: 50%;
+    // width: 50%;
     height: 100vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    // background-attachment: fixed;
     /* position: absolute; */
-    left: 50%;
-    top: 0;
+    // left: 50%;
+    // top: 0;
     display: grid;
     justify-content: center;
     align-items: center;
-    position: absolute;
+
   }
 
 
@@ -129,4 +129,8 @@ body {
       opacity: 0.8;
     }
   }
+}
+
+.js-scroll-reveal-container--sp {
+  position: relative;
 }

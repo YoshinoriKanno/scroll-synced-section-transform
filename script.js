@@ -43,7 +43,7 @@
         items.forEach((item, index) => {
           const baseHeight = viewportHeight * (index + 1);
           const clipHeight = Math.max(baseHeight - translateY, 0);
-          item.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight}px, 0 ${clipHeight}px)`;
+          // item.style.clipPath = `polygon(0 0, 100% 0, 100% ${clipHeight}px, 0 ${clipHeight}px)`;
 
           const zIndex = items.length - index;
           item.style.zIndex = zIndex;

@@ -23,29 +23,20 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: absolute;
-  left: 0;
-  top: 0;
   display: grid;
   justify-content: center;
   align-items: center;
 }
 @media (min-width: 768px) {
   .scroll-reveal-item {
-    width: 50%;
     height: 100vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     /* position: absolute; */
-    left: 50%;
-    top: 0;
     display: grid;
     justify-content: center;
     align-items: center;
-    position: absolute;
   }
 }
 .scroll-reveal-item .scroll-reveal-item__card {
@@ -113,4 +104,8 @@ body {
 .bottom article p {
   padding: 15px 0;
   opacity: 0.8;
+}
+
+.js-scroll-reveal-container--sp {
+  position: relative;
 }
